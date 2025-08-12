@@ -2,29 +2,46 @@
 %Actuo es un predicado de aridad 2: Relaciona pelicula con un Actor/Actriz
 %Aridad => Cantidad de argumentos
 
-actuo("Once upon a time in  Hollywood","Leo Di Caprio").
-actuo("Once upon a time in  Hollywood","Brad Pitt").
-actuo("Once upon a time in  Hollywood","Margot Robbie").
-actuo("Wolf of Wall Street","Leo Di Caprio").
-actuo("Wolf of Wall Street","Margot Robbie").
-actuo("Wolf of Wall Street","Jonah Hill").
-actuo("Good Fellas","Lorraine Bracco").
-actuo("Good Fellas","Ray Liotta").
-actuo("Good Fellas","Joe Pesci").
-actuo("Good Fellas","Robert De Niro").
-director("Good Fellas","Martin Scorsese").
-ganoUnOscar("Good Fellas").
+pastas(ravioles).
+pastas(fideos).
+pastas(agnolotis).
+pastas(involtini).
 
-suertudo(Actor):-actuo(Pelicula,Actor),ganoUnOscar(Pelicula).
+%%predicado poliadicos
 
-comidas("milanesa","no pasta").
-comidas("fideos","pasta").
-comidas("ravioles","pasta").
-comidas("berenjenas","no pasta").
-comidas("gabagool","no pasta").
-aptoCeliacos("fideos").
-aptoCeliacos("gabagool").
-aptoCeliacos("ravioles").
+come(juan,espinaca).
+come(marcelo,revueltoGramajo).
+gusta(juan,milanesa).
+gusta(marcelo,revueltoGramajo).
 
+%%ahora quiero decir que comensalFeliz si come x comida y le gusta
+%%Regla
+comensalFeliz(Persona):-come(Persona,Comida),gusta(Persona,Comida).
 
-pastasAptasCeliacos(Comida):-comidas(Comida,"pasta"), aptoCeliacos(Comida).
+%%Reglas
+
+esHumano(socrates).
+esHumano(platon).
+esMortal(Persona):-esHumano(Persona).
+
+%%Reglas compuestas
+viveEn(tefi, lanus).
+viveEn(gise, lanus).
+viveEn(alf, lanus).
+viveEn(dodain, liniers).
+docente(alf).
+docente(tefi).
+docente(gise).
+docente(dodain).
+
+%%Nuestro requerimiento ahora es que “Cualquier docente que vive en Lanús es un afortunado”
+
+esAfortunado(Docente):-docente(Docente),viveEn(Docente,lanus).
+
+%%Ahora quiero hacer lo mismo pero con un OR, utilizamos dos predicados por separado
+afortunado(Docente):-docente(Docente).
+afortunado(Docente):-viveEn(Docente,lanus).
+
+%%definicion por comprension
+
+a(X):-X>2,X<6.
