@@ -9,6 +9,17 @@ siguiente(Numero,Siguiente):-Siguiente is Numero + 1.
 
 %%Pattern matching-> toma ambos resultados
 valor(0,1).
+valor(1,1).
 valor(Inc,Inc).
 
-%%QUEDE EN NTH0 modulo 3
+
+%%==================================LISTAS==================================
+%% [] lista vacia
+%% [Borges] lista con un solo elemento
+%% [1,2,3,4] lista con 4 elementos
+%% Las listas pueden ser heterogeneas, es decir [lala,2,"Juan",3.14]
+%% Es una estructura recursiva ya que se compone de [Cabeza|Cola]
+
+%%==================================Functores==================================
+nacio(juan,fecha(11,01,2005)).
+nacio(jose,fecha(11,01,2002)).
